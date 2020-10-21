@@ -3,7 +3,7 @@
         var map;
         // var server = "http://localhost/pdg_tourism_mobile/tourism_pdg/";
         // var server = "http://10.44.10.246/pdg_tourism/tourism_pdg/";
-        var server = "http://192.168.100.73/pdg_tourism_mobile/tourism_pdg/";
+        var server = "http://10.44.10.231/pdg_tourism_mobile/tourism_pdg/";
         var cekRadiusStatus = "off";   //RADIUS
         var circles = []; //RADIUS
         var rad; //RADIUS
@@ -1214,7 +1214,7 @@ MENU PENCARIAN BERDASARKAN NAMA, ALAMAT, TIPE, FASILITAS, RATING< HAVE OBJEK WIS
           $('#galleryrecommendxxx').hide();
 
           $('#view_kanan_table').show();
-          document.getElementById('judul_table').innerHTML="List Tourism";
+          document.getElementById('judul_table').innerHTML="Search Tourism by Rating";
 
           $('#kanan_table').empty();
           $('#kanan_table').append("<tr><th class='centered'>Name</th><th class='centered'colspan='3'>Action</th></tr>");
@@ -1240,7 +1240,7 @@ MENU PENCARIAN BERDASARKAN NAMA, ALAMAT, TIPE, FASILITAS, RATING< HAVE OBJEK WIS
           $('#galleryrecommendxxx').hide();
 
           $('#view_kanan_table').show();
-          document.getElementById('judul_table').innerHTML="List Tourism";
+          document.getElementById('judul_table').innerHTML="Tourism Have Mosque & Restaurant";
 
           $('#kanan_table').empty();
           $('#kanan_table').append("<tr><th class='centered'>Name</th><th class='centered'colspan='3'>Action</th></tr>");
