@@ -335,8 +335,8 @@
 
                   <table class="table">
                     <thead>
-                      <th>Date</th>
-                      <th>Info</th>
+                      <!-- <th>Date</th>
+                      <th>Info</th> -->
                     </thead>
                       <?php  
                         while ($rows = mysqli_fetch_array($result)) 

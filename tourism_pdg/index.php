@@ -366,28 +366,55 @@
             <div  class="col-lg-4 main-chart">  
               <div class="row">                   
                 <div class="col-sm-12 col-sm-12 mb">
-                  <div class="white-panel pns" style="height: 550px; width: auto; padding-right: 0px" >
-                    <header class="panel-heading" style=" width: 100%;"  >
-                      <!-- <label class="btn btn-compose" id="judul_table" style="margin-bottom: 0px; background-color: #26a69a;"> <b>Recommendation</b>
-                      </label> -->
+                  <div class="white-panel pns" style="height: auto; width: auto;" >
+                    <header class="panel-heading" style=" width: 100%;">
+                      <!-- <h4 style="color: #26a69a;"><b>Recommendation</b></h4> -->
+                      <!-- <hr> -->
                     </header>
                     <?php 
                       require '../connect.php';
 
-                      $querysearch = "SELECT id, gallery_tourism, rating FROM tourism_gallery 
+                      $gallery_tm = "SELECT id, gallery_tourism, rating FROM tourism_gallery 
                                       LEFT JOIN review ON tourism_gallery.id = review.id_ow 
                                       WHERE serial_number = 1 
                                       GROUP BY tourism_gallery.id HAVING AVG(rating) >= 3 
                                       ORDER BY review.rating DESC";
 
-                      $result = mysqli_query($conn, $querysearch);
-                    ?>
+                      $result = mysqli_query($conn, $gallery_tm);
 
-                    <div style="height: 540px; overflow-y: scroll; ">    
+                      $gallery_worship = "SELECT worship_place_gallery.id, gallery_worship_place, name 
+                                          FROM worship_place_gallery 
+                                          LEFT JOIN worship_place ON worship_place_gallery.id = worship_place.id 
+                                          WHERE serial_number = 1 && park_area_size >= 30";
+
+                      $result2 = mysqli_query($conn, $gallery_worship);
+
+                      $gallery_hot = "SELECT id, gallery_hotel, rating FROM hotel_gallery 
+                                      LEFT JOIN review ON hotel_gallery.id = review.id_hotel 
+                                      WHERE serial_number = 1";
+
+                      $result3 = mysqli_query($conn, $gallery_hot);                                     
+
+                      $gallery_sou = "SELECT id, gallery_souvenir, rating FROM souvenir_gallery 
+                                      LEFT JOIN review ON souvenir_gallery.id = review.id_souvenir 
+                                      WHERE serial_number = 1";
+                                      // GROUP BY souvenir_gallery.id HAVING AVG(rating) >= 1 
+                                      // ORDER BY review.rating DESC";
+
+                      $result4 = mysqli_query($conn, $gallery_sou);
+
+                      $gallery_res = "SELECT id, gallery_restaurant, rating FROM restaurant_gallery 
+                                      LEFT JOIN review ON restaurant_gallery.id = review.id_restaurant 
+                                      WHERE serial_number = 1";
+
+                      $result5 = mysqli_query($conn, $gallery_res);
+
+                    ?>
+                    <div style="height: 560px; overflow-y: scroll; ">  
+                    <br>  
                       <!-- TOURISM -->
-                      <br>
                       <b style="color: black">Tourism</b>
-                       <div class="imam-slider" id="galleryTourism">
+                      <div class="imam-slider" id="galleryTourism">
                         <div class="isi-slider">
                           <?php
                               while ($rows = mysqli_fetch_array($result)) 
@@ -416,42 +443,125 @@
                       <b style="color: black">Mosque</b>
                       <div class="imam-slider" id="galleryMesjid">
                         <div class="isi-slider">
-                          <a href="" onclick="galleryreco('TM001')"><img src="../_foto/pam.jpg"></a>
-                          <a href="" onclick="galleryreco('TM002')"><img src="../_foto/sitinur.jpg"></a>
-                          <a href="" onclick="galleryreco('TM003')"><img src="../_foto/pam.jpg"></a>
-                          <a href="" onclick="galleryreco('TM006')"><img src="../_foto/sitinur.jpg"></a>
+                          <?php
+                              while ($rows = mysqli_fetch_array($result2)) 
+                              {
+                                $id_worship = $rows['id'];
+                                $gambar_worship = $rows['gallery_worship_place'];                             
+                                if( mysqli_num_rows($result2) >= 4) {
+                                  ?><a href="" onclick="galleryrecomes('<?php echo $id_worship ?>')"><img src="../_foto/foto_mesjid/<?php echo $gambar_worship?>"></a><?php
+                                }
+                                else {
+                                  $array_id_worship[]=$rows['id'];
+                                  $array_gambar_worship[]=$rows['gallery_worship_place'];
+                                  ?>
+                                  <a href="" onclick="galleryrecomes('<?php echo $array_id_worship[array_rand($array_id_worship)] ?>')"><img src="../_foto/foto_mesjid/<?php echo $array_gambar_worship[array_rand($array_gambar_worship)]?>"></a>
+
+                                  <a href="" onclick="galleryrecomes('<?php echo $array_id_worship[array_rand($array_id_worship)] ?>')"><img src="../_foto/foto_mesjid/<?php echo $array_gambar_worship[array_rand($array_gambar_worship)]?>"></a>
+
+                                  <a href="" onclick="galleryrecomes('<?php echo $array_id_worship[array_rand($array_id_worship)] ?>')"><img src="../_foto/foto_mesjid/<?php echo $array_gambar_worship[array_rand($array_gambar_worship)]?>"></a>
+
+                                  <a href="" onclick="galleryrecomes('<?php echo $array_id_worship[array_rand($array_id_worship)] ?>')"><img src="../_foto/foto_mesjid/<?php echo $array_gambar_worship[array_rand($array_gambar_worship)]?>"></a>
+                                  <?php
+                                  //echo $array_id_tm[array_rand($array_id_tm)];
+                                }
+                              }
+                          ?>
                         </div>
                       </div>
                       <!-- HOTEL -->
                       <b style="color: black">Hotel</b>
                       <div class="imam-slider" id="galleryHotel">
                         <div class="isi-slider">
-                          <a href="" onclick="galleryreco('TM001')"><img src="../_foto/pam.jpg"></a>
-                          <a href="" onclick="galleryreco('TM002')"><img src="../_foto/sitinur.jpg"></a>
-                          <a href="" onclick="galleryreco('tw004')"><img src="../_foto/pam.jpg"></a>
-                          <a href="" onclick="galleryreco('tw005')"><img src="../_foto/sitinur.jpg"></a>
-                        </div>
-                      </div>
-                      <!-- RESTAURANT -->
-                      <b style="color: black">Restaurant</b>
-                      <div class="imam-slider" id="galleryRestaurant">
-                        <div class="isi-slider">
-                          <a href="" onclick="galleryreco('TM001')"><img src="../_foto/pam.jpg"></a>
-                          <a href="" onclick="galleryreco('TM002')"><img src="../_foto/sitinur.jpg"></a>
-                          <a href="" onclick="galleryreco('tw004')"><img src="../_foto/pam.jpg"></a>
-                          <a href="" onclick="galleryreco('tw005')"><img src="../_foto/sitinur.jpg"></a>
+                          <?php
+                              while ($rows = mysqli_fetch_array($result3)) 
+                              {
+                                $id_hot = $rows['id'];
+                                $gambar_hot = $rows['gallery_hotel'];                             
+                                if( mysqli_num_rows($result3) >= 4) {
+                                  ?><a href="" onclick="galleryrecohot('<?php echo $id_hot ?>')"><img src="../_foto/foto_hotel/<?php echo $gambar_hot?>"></a><?php
+                                }
+                                else {
+                                  $array_id_hot[]=$rows['id'];
+                                  $array_gambar_hot[]=$rows['gallery_hotel'];
+                                  ?>
+                                  <a href="" onclick="galleryrecohot('<?php echo $array_id_hot[array_rand($array_id_hot)] ?>')"><img src="../_foto/foto_hotel/<?php echo $array_gambar_hot[array_rand($array_gambar_hot)]?>"></a>
+
+                                  <a href="" onclick="galleryrecohot('<?php echo $array_id_hot[array_rand($array_id_hot)] ?>')"><img src="../_foto/foto_hotel/<?php echo $array_gambar_hot[array_rand($array_gambar_hot)]?>"></a>
+
+                                  <a href="" onclick="galleryrecohot('<?php echo $array_id_hot[array_rand($array_id_hot)] ?>')"><img src="../_foto/foto_hotel/<?php echo $array_gambar_hot[array_rand($array_gambar_hot)]?>"></a>
+
+                                  <a href="" onclick="galleryrecohot('<?php echo $array_id_hot[array_rand($array_id_hot)] ?>')"><img src="../_foto/foto_hotel/<?php echo $array_gambar_hot[array_rand($array_gambar_hot)]?>"></a>
+
+                                  <?php
+                                  //echo $array_id_tm[array_rand($array_id_tm)];
+                                }
+                              }
+                          ?>
                         </div>
                       </div>
                       <!-- SOUVENIR -->
                       <b style="color: black">Souvenir</b>
                       <div class="imam-slider" id="gallerySouvenir">
                         <div class="isi-slider">
-                          <a href="" onclick="galleryreco('TM001')"><img src="../_foto/pam.jpg"></a>
-                          <a href="" onclick="galleryreco('TM002')"><img src="../_foto/sitinur.jpg"></a>
-                          <a href="" onclick="galleryreco('tw004')"><img src="../_foto/pam.jpg"></a>
-                          <a href="" onclick="galleryreco('tw005')"><img src="../_foto/sitinur.jpg"></a>
+                          <?php
+                              while ($rows = mysqli_fetch_array($result4)) 
+                              {
+                                $id_sou = $rows['id'];
+                                $gambar_sou = $rows['gallery_souvenir'];                             
+                                if( mysqli_num_rows($result4) >= 4) {
+                                  ?><a href="" onclick="galleryrecosou('<?php echo $id_sou ?>')"><img src="../_foto/foto_souvenir/<?php echo $gambar_sou?>"></a><?php
+                                }
+                                else {
+                                  $array_id_sou[]=$rows['id'];
+                                  $array_gambar_sou[]=$rows['gallery_souvenir'];
+                                  ?>
+                                  <a href="" onclick="galleryrecosou('<?php echo $array_id_sou[array_rand($array_id_sou)] ?>')"><img src="../_foto/foto_souvenir/<?php echo $array_gambar_sou[array_rand($array_gambar_sou)]?>"></a>
+
+                                  <a href="" onclick="galleryrecosou('<?php echo $array_id_sou[array_rand($array_id_sou)] ?>')"><img src="../_foto/foto_souvenir/<?php echo $array_gambar_sou[array_rand($array_gambar_sou)]?>"></a>
+
+                                  <a href="" onclick="galleryrecosou('<?php echo $array_id_sou[array_rand($array_id_sou)] ?>')"><img src="../_foto/foto_souvenir/<?php echo $array_gambar_sou[array_rand($array_gambar_sou)]?>"></a>
+
+                                  <a href="" onclick="galleryrecosou('<?php echo $array_id_sou[array_rand($array_id_sou)] ?>')"><img src="../_foto/foto_souvenir/<?php echo $array_gambar_sou[array_rand($array_gambar_sou)]?>"></a>
+                                  <?php
+                                  //echo $array_id_tm[array_rand($array_id_tm)];
+                                }
+                              }
+                          ?>
                         </div>
                       </div>
+                      <!-- RESTAURANT -->
+                      <b style="color: black">Restaurant</b>
+                      <div class="imam-slider" id="galleryRestaurant">
+                        <div class="isi-slider">
+                          <?php
+                              while ($rows = mysqli_fetch_array($result5)) 
+                              {
+                                $id_res = $rows['id'];
+                                $gambar_res = $rows['gallery_restaurant'];                             
+                                if( mysqli_num_rows($result5) >= 4) {
+                                  ?><a href="" onclick="galleryrecores('<?php echo $id_res ?>')"><img src="../_foto/foto_restaurant/<?php echo $gambar_res?>"></a><?php
+                                }
+                                else {
+                                  $array_id_res[]=$rows['id'];
+                                  $array_gambar_res[]=$rows['gallery_restaurant'];
+                                  ?>
+                                  <a href="" onclick="galleryrecores('<?php echo $array_id_res[array_rand($array_id_res)] ?>')"><img src="../_foto/foto_restaurant/<?php echo $array_gambar_res[array_rand($array_gambar_res)]?>"></a>
+
+                                  <a href="" onclick="galleryrecores('<?php echo $array_id_res[array_rand($array_id_res)] ?>')"><img src="../_foto/foto_restaurant/<?php echo $array_gambar_res[array_rand($array_gambar_res)]?>"></a>
+
+                                  <a href="" onclick="galleryrecores('<?php echo $array_id_res[array_rand($array_id_res)] ?>')"><img src="../_foto/foto_restaurant/<?php echo $array_gambar_res[array_rand($array_gambar_res)]?>"></a>
+
+                                  <a href="" onclick="galleryrecores('<?php echo $array_id_res[array_rand($array_id_res)] ?>')"><img src="../_foto/foto_restaurant/<?php echo $array_gambar_res[array_rand($array_gambar_res)]?>"></a>
+
+                                  <?php
+                                  //echo $array_id_tm[array_rand($array_id_tm)];
+                                }
+                              }
+                          ?>
+                        </div>
+                      </div>
+                      
                     </div>
                   </div>
                 </div>                

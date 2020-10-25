@@ -71,9 +71,10 @@
 
       while($baris = mysqli_fetch_array($hasil5)){
           $rating = $baris['rating'];
+          $date_rate  = $baris['tanggal'];
           $name_user = $baris['name'];
           $comment = $baris['comment'];
-          $data_rating[] = array('rating'=>$rating,'name'=>$name_user, 'comment'=>$comment);
+          $data_rating[] = array('rating'=>$rating, 'tanggal'=>$date_rate,'name'=>$name_user, 'comment'=>$comment);
       }         
 
       //DATA INFO
@@ -83,7 +84,7 @@
       while($baris = mysqli_fetch_array($hasil6)){
           $date_info = $baris['tanggal'];
           $informasi = $baris['informasi'];
-          $data_info[] = array('tangga'=>$date_info,'informasi'=>$informasi);
+          $data_info[] = array('tanggal'=>$date_info,'informasi'=>$informasi);
       }                
 
       $arr=array("data"=>$dataarray, "gallery"=>$data_gallery, "fasilitas"=>$data_fasilitas, "Event"=>$data_event, "rating"=>$data_rating, "info"=>$data_info);

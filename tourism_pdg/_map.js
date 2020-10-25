@@ -2,8 +2,8 @@
 
         var map;
         // var server = "http://localhost/pdg_tourism_mobile/tourism_pdg/";
-        // var server = "http://10.44.10.246/pdg_tourism/tourism_pdg/";
-        var server = "http://10.44.10.231/pdg_tourism_mobile/tourism_pdg/";
+        var server = "http://localhost/pdg_tourism_mobile/tourism_pdg/";
+        // var server = "http://10.44.10.231/pdg_tourism_mobile/tourism_pdg/";
         var cekRadiusStatus = "off";   //RADIUS
         var circles = []; //RADIUS
         var rad; //RADIUS
@@ -479,16 +479,45 @@ FUNGSI - FUNGSI YANG DIPAKAI BERSAMA
 
       function galeri(a)
       {    
-          console.log(a);
-          window.open(server+'gallery.php?idgallery='+a);    
+        console.log(a);
+        window.open(server+'gallery.php?idgallery='+a);    
       }
 
-      // GALLERY RECOMENDATION SLIDER DI INDEX
+      // GALLERY RECOMENDATION SLIDER TOURISM
       function galleryreco(a)
       {    
-          console.log(a);
-          window.open(server+'gallery.php?idgallery='+a);    
+        console.log(a);
+        window.open(server+'gallery.php?idgallery='+a);    
       }
+
+      // GALLERY RECOMENDATION SLIDER MESJID
+      function galleryrecomes(a)
+      {    
+        console.log(a);
+        window.open(server+'gallery2.php?idgallery='+a);    
+      }
+
+      // GALLERY RECOMENDATION SLIDER HOTEL
+      function galleryrecohot(a)
+      {    
+        console.log(a);
+        window.open(server+'gallery3.php?idgallery='+a);
+      }
+
+      // GALLERY RECOMENDATION SLIDER SOUVENIR
+      function galleryrecosou(a)
+      {    
+        console.log(a);
+        window.open(server+'gallery4.php?idgallery='+a);
+      }
+
+      // GALLERY RECOMENDATION SLIDER RESTAURANT
+      function galleryrecores(a)
+      {    
+        console.log(a);
+        window.open(server+'gallery5.php?idgallery='+a);
+      }
+
 
       function posisisekarang()
       {
@@ -771,7 +800,7 @@ FUNGSI - FUNGSI YANG DIPAKAI BERSAMA
               animation: google.maps.Animation.DROP,
               map: map
               });
-          } else if (id.includes("tw")) {
+          } else if (id.includes("TM")) {
             var marker = new google.maps.Marker({
               position: centerBaru,              
               icon:'icon/marker_tw.png',
@@ -2353,7 +2382,7 @@ MENU PENCARIAN BERDASARKAN NAMA, ALAMAT, TIPE, FASILITAS, RATING< HAVE OBJEK WIS
         var url;
         if (id.includes("H")) {
           url = "_detail_hotel.php";
-        } else if (id.includes("tw")) {
+        } else if (id.includes("TM")) {
           url = "_detail_angkot.php";
         } else if (id.includes("SO")) {
           url = "_detail_souvenir.php";

@@ -19,11 +19,9 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="init()">
 
     <div id="map"></div>
-
-
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNnzxae2AewMUN0Tt_fC3gN38goeLVdVE"></script> 
