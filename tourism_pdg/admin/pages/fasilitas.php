@@ -47,7 +47,7 @@
                                     <h4 style="color: white">Confirm Delete</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <span>Do you want to delete this data ?</span>
+                                    <span>Do you want to delete the facility ?</span>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

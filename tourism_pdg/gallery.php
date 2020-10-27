@@ -526,7 +526,7 @@
                                 <div class="modal-content">
                                   <div style="background-color: " class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" onclick="pauseVids()">&times;</button>
-                                    <h4 style="color: white; text-align: left; font-size: 20px;">Video's of <b> <?= $tourism_name ?></b></h4>
+                                    <h4 style="color: white; text-align: left; font-size: 20px;">Videos of<b> <?php echo $id; ?></b></h4>
                                   </div>
 
                                   <div class="modal-body">

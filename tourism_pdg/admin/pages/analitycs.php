@@ -9,23 +9,18 @@
             <div class="box-body">
                 <div class="form-group">
                     <div class="row">
-                    <div class="col-sm-6">
                         <!-- Visitors: This Week and Last Week -->
                         <iframe width="473" height="294" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQgAL8ruPJIHtoTqO9DOX9PcbL5lvA1yRqpeLvK_eM7VmpNCD6b3yCFBUUmUWcIi-YyO4Pb9rAweAUo/pubchart?oid=356799356&amp;format=interactive"></iframe>
-                    </div>
-                    <div class="text-right">
+                    
                        <!-- New Users -->
                         <iframe width="473" height="294" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQgAL8ruPJIHtoTqO9DOX9PcbL5lvA1yRqpeLvK_eM7VmpNCD6b3yCFBUUmUWcIi-YyO4Pb9rAweAUo/pubchart?oid=293401521&amp;format=interactive"></iframe> 
-                    </div>
-                    <div class="col-sm-6">
+                    
                         <!-- City -->
                         <iframe width="473" height="294" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQgAL8ruPJIHtoTqO9DOX9PcbL5lvA1yRqpeLvK_eM7VmpNCD6b3yCFBUUmUWcIi-YyO4Pb9rAweAUo/pubchart?oid=435802509&amp;format=interactive"></iframe>
-                    </div>
-                    <div class="text-right">
+                    
                         <!-- Top Country -->
                         <iframe width="473" height="294" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQgAL8ruPJIHtoTqO9DOX9PcbL5lvA1yRqpeLvK_eM7VmpNCD6b3yCFBUUmUWcIi-YyO4Pb9rAweAUo/pubchart?oid=616177097&amp;format=interactive"></iframe>
-                    </div>
-                    <div class="col-sm-6">
+                    
                         <!-- Browsers -->
                         <iframe width="473" height="294" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQgAL8ruPJIHtoTqO9DOX9PcbL5lvA1yRqpeLvK_eM7VmpNCD6b3yCFBUUmUWcIi-YyO4Pb9rAweAUo/pubchart?oid=1062420364&amp;format=interactive"></iframe>
                     </div>

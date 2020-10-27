@@ -374,6 +374,7 @@
                     <?php 
                       require '../connect.php';
 
+                      //TOURISM
                       $gallery_tm = "SELECT id, gallery_tourism, rating FROM tourism_gallery 
                                       LEFT JOIN review ON tourism_gallery.id = review.id_ow 
                                       WHERE serial_number = 1 
@@ -382,6 +383,7 @@
 
                       $result = mysqli_query($conn, $gallery_tm);
 
+                      //WORSHIP
                       $gallery_worship = "SELECT worship_place_gallery.id, gallery_worship_place, name 
                                           FROM worship_place_gallery 
                                           LEFT JOIN worship_place ON worship_place_gallery.id = worship_place.id 
@@ -389,12 +391,14 @@
 
                       $result2 = mysqli_query($conn, $gallery_worship);
 
+                      //HOTEL
                       $gallery_hot = "SELECT id, gallery_hotel, rating FROM hotel_gallery 
                                       LEFT JOIN review ON hotel_gallery.id = review.id_hotel 
                                       WHERE serial_number = 1";
 
                       $result3 = mysqli_query($conn, $gallery_hot);                                     
 
+                      //SOUVENIR
                       $gallery_sou = "SELECT id, gallery_souvenir, rating FROM souvenir_gallery 
                                       LEFT JOIN review ON souvenir_gallery.id = review.id_souvenir 
                                       WHERE serial_number = 1";
@@ -403,6 +407,7 @@
 
                       $result4 = mysqli_query($conn, $gallery_sou);
 
+                      //RESTAURANT
                       $gallery_res = "SELECT id, gallery_restaurant, rating FROM restaurant_gallery 
                                       LEFT JOIN review ON restaurant_gallery.id = review.id_restaurant 
                                       WHERE serial_number = 1";
@@ -429,8 +434,11 @@
                                   $array_gambar[]=$rows['gallery_tourism'];
                                   ?>
                                   <a href="" onclick="galleryreco('<?php echo $array_id_tm[array_rand($array_id_tm)] ?>')"><img src="../_foto/<?php echo $array_gambar[array_rand($array_gambar)]?>"></a>
+
                                   <a href="" onclick="galleryreco('<?php echo $array_id_tm[array_rand($array_id_tm)] ?>')"><img src="../_foto/<?php echo $array_gambar[array_rand($array_gambar)]?>"></a>
+
                                   <a href="" onclick="galleryreco('<?php echo $array_id_tm[array_rand($array_id_tm)] ?>')"><img src="../_foto/<?php echo $array_gambar[array_rand($array_gambar)]?>"></a>
+                                  
                                   <a href="" onclick="galleryreco('<?php echo $array_id_tm[array_rand($array_id_tm)] ?>')"><img src="../_foto/<?php echo $array_gambar[array_rand($array_gambar)]?>"></a>
                                   <?php
                                   //echo $array_id_tm[array_rand($array_id_tm)];
